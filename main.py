@@ -11,6 +11,8 @@ from fastapi import HTTPException
 
 app = FastAPI()
 
+BASE_URL = os.getenv("BASE_URL", "http://127.0.0.1:8000")
+
 model = YOLO('best1.pt')
 
 os.makedirs("detections", exist_ok=True)
@@ -166,7 +168,7 @@ async def predict(file: UploadFile = File(...)):
     else:
         message = "No fire or smoke detected"
 
-    BASE_URL = "http://127.0.0.1:8000"  # أو رابط السيرفر بعد النشر
+    
 
     image_url = None
 
